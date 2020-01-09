@@ -14,3 +14,8 @@ while True:
 print(products)
 
 products[0][0] # 第一格是大清單中的第0個，而第二格是小清單中的第0個
+
+for p in products:
+	print(p[0])# 這樣只會印出每個清單的第0格
+	print(p[0], 'the price is', p[1] )
+	
