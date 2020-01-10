@@ -18,4 +18,12 @@ products[0][0] # 第一格是大清單中的第0個，而第二格是小清單�
 for p in products:
 	print(p[0])# 這樣只會印出每個清單的第0格
 	print(p[0], 'the price is', p[1] )
-	
+
+#'abd' + '123' = 'abc123' #字串可以做合併 挺常用
+#'abc' * 3 = 'abcabcabc' #不能做除法跟減法
+
+with open('products.txt','w') as f: #將會在電腦創造此檔案，已有的話將會覆蓋此檔案
+	for p in products:
+		f.write(p[0] + ',' + p[1] + '\n') #write into the 'f' file
+#open只是打開檔案而已，真正寫入是在f.write開始
+#檔名改成csv就變成excel了
