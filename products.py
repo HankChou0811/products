@@ -22,8 +22,14 @@ for p in products:
 #'abd' + '123' = 'abc123' #字串可以做合併 挺常用
 #'abc' * 3 = 'abcabcabc' #不能做除法跟減法
 
-with open('products.txt','w') as f: #將會在電腦創造此檔案，已有的話將會覆蓋此檔案
+with open('products.csv','w', encoding='utf-8') as f: #將會在電腦創造此檔案，已有的話將會覆蓋此檔案
+	f.write('products, price\n') #寫這個還不能加逗號 要直接字串''全概括
 	for p in products:
-		f.write(p[0] + ',' + p[1] + '\n') #write into the 'f' file
+		f.write(str(p[0]) + ',' + p[1] + '\n') #write into the 'f' file
 #open只是打開檔案而已，真正寫入是在f.write開始
 #檔名改成csv就變成excel了
+
+#加法只能字串跟字串或整數跟整數
+#要變字串就要在前面加上str
+
+
