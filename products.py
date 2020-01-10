@@ -1,13 +1,20 @@
 #二維清單介紹
+import os # operating system
 products = []
+ #檢查有沒有檔案的指令 (在該地址中)
+if os.path.isfile('products.csv'): 
+	print('yeah! we found it')
+	with open('products.csv' , 'r', encoding='utf-8') as f:
+		for line in f:
+			if 'products, price' in line:
+				continue #要是for loop 遇到以上字串 則跳過此輪，直接從下一行開始 
+			name, price = line.strip().split(',') #split就是分隔的意思，後面括弧輸入要分隔的方式
+		 #strip就是刪掉換行跟空白
+			#這樣印出來s他會是清單(被split之後就是)
+	print(products)
 
-with open('products.csv' , 'r', encoding='utf-8') as f:
-	for line in f:
-		if 'products, price' in line:
-			continue #要是for loop 遇到以上字串 則跳過此輪，直接從下一行開始 
-		name, price = line.strip().split(',') #split就是分隔的意思，後面括弧輸入要分隔的方式
-	 #strip就是刪掉換行跟空白
-		#這樣印出來s他會是清單(被split之後就是)
+else:
+	print('not found')
 
 
 #使用者輸入
