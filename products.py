@@ -3,12 +3,14 @@ products = []
 
 with open('products.csv' , 'r', encoding='utf-8') as f:
 	for line in f:
+		if 'products, price' in line:
+			continue #要是for loop 遇到以上字串 則跳過此輪，直接從下一行開始 
 		name, price = line.strip().split(',') #split就是分隔的意思，後面括弧輸入要分隔的方式
 	 #strip就是刪掉換行跟空白
 		#這樣印出來s他會是清單(被split之後就是)
 
 
-
+#使用者輸入
 while True:
 	name = input('please enter the name of the product:')
 	if name == 'q':
@@ -24,6 +26,7 @@ print(products)
 
 products[0][0] # 第一格是大清單中的第0個，而第二格是小清單中的第0個
 
+#印出
 for p in products:
 	print(p[0])# 這樣只會印出每個清單的第0格
 	print(p[0], 'the price is', p[1] )
@@ -31,6 +34,7 @@ for p in products:
 #'abd' + '123' = 'abc123' #字串可以做合併 挺常用
 #'abc' * 3 = 'abcabcabc' #不能做除法跟減法
 
+#寫入!
 with open('products.csv','w', encoding='utf-8') as f: #將會在電腦創造此檔案，已有的話將會覆蓋此檔案
 	f.write('products, price\n') #寫這個還不能加逗號 要直接字串''全概括
 	for p in products:
