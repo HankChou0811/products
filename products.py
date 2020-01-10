@@ -1,5 +1,14 @@
 #二維清單介紹
 products = []
+
+with open('products.csv' , 'r', encoding='utf-8') as f:
+	for line in f:
+		name, price = line.strip().split(',') #split就是分隔的意思，後面括弧輸入要分隔的方式
+	 #strip就是刪掉換行跟空白
+		#這樣印出來s他會是清單(被split之後就是)
+
+
+
 while True:
 	name = input('please enter the name of the product:')
 	if name == 'q':
