@@ -4,20 +4,14 @@ import os # operating system
  #檢查有沒有檔案的指令 (在該地址中)
 def read_file(filename):
 	products = []
-	if os.path.isfile(filename): #(我不清楚為什麼不用字串'')
-		print('yeah! we found it')
-		with open(filename , 'r', encoding='utf-8') as f:
-			for line in f:
-				if 'products, price' in line:
-					continue #要是for loop 遇到以上字串 則跳過此輪，直接從下一行開始 
-				name, price = line.strip().split(',') #split就是分隔的意思，後面括弧輸入要分隔的方式
-			 #strip就是刪掉換行跟空白
-				#這樣印出來s他會是清單(被split之後就是)
-		print(products)
-	else:
-		print('not found')
+	with open(filename , 'r', encoding='utf-8') as f:
+		for line in f:
+			if 'product, price' in line:
+				continue #要是for loop 遇到以上字串 則跳過此輪，直接從下一行開始 
+			name, price = line.strip().split(',') #split就是分隔的意思，後面括弧輸入要分隔的方式
+			products.append([name, price])   #strip就是刪掉換行跟空白
+			#這樣印出來s他會是清單(被split之後就是)
 	return products
-
 
 #使用者輸入
 def user_input(products):
@@ -58,7 +52,19 @@ def write_file(filename, products):
 #加法只能字串跟字串或整數跟整數
 #要變字串就要在前面加上str
 
-products = read_file('products.csv')
-products = user_input(products)
-print_products(products)
-write_file('products.csv', products)
+
+def main(): #這邊裝者主要的執行程式碼!!
+	filename = 'products.csv'
+	if os.path.isfile(filename): 
+		products = read_file(filename)
+		print('yeah! we found it')
+	else:
+		print('not found')
+
+
+	products = user_input(products)
+	print_products(products)
+	write_file('products.csv', products)
+main() #有這個 程式才會有動作，沒有的話 上面都只是function 不會有動作
+
+#把我們的程式重購整齊(加入function) 的行為叫做refactor!
